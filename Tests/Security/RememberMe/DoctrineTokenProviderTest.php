@@ -117,10 +117,7 @@ class DoctrineTokenProviderTest extends TestCase
         $this->assertFalse($provider->verifyToken($token, $oldValue));
     }
 
-    /**
-     * @return DoctrineTokenProvider
-     */
-    protected function bootstrapProvider()
+    protected function bootstrapProvider(): DoctrineTokenProvider
     {
         $config = ORMSetup::createConfiguration(true);
         if (class_exists(DefaultSchemaManagerFactory::class)) {

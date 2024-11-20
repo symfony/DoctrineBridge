@@ -21,7 +21,7 @@ class DoctrineTokenProviderPostgresTest extends DoctrineTokenProviderTest
         }
     }
 
-    protected function bootstrapProvider()
+    protected function bootstrapProvider(): DoctrineTokenProvider
     {
         $config = class_exists(ORMSetup::class) ? ORMSetup::createConfiguration(true) : new Configuration();
         if (class_exists(DefaultSchemaManagerFactory::class)) {

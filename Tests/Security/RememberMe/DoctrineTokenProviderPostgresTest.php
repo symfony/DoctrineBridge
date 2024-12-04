@@ -10,6 +10,7 @@ use Symfony\Bridge\Doctrine\Security\RememberMe\DoctrineTokenProvider;
 
 /**
  * @requires extension pdo_pgsql
+ *
  * @group integration
  */
 class DoctrineTokenProviderPostgresTest extends DoctrineTokenProviderTest

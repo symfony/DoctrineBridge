@@ -122,9 +122,7 @@ class DoctrineTokenProviderTest extends TestCase
         $config = ORMSetup::createConfiguration(true);
         $config->setSchemaManagerFactory(new DefaultSchemaManagerFactory());
 
-        if (!class_exists(\Doctrine\Persistence\Mapping\Driver\AnnotationDriver::class)) { // doctrine/persistence >= 3.0
-            $config->setLazyGhostObjectEnabled(true);
-        }
+        $config->setLazyGhostObjectEnabled(true);
 
         $connection = DriverManager::getConnection([
             'driver' => 'pdo_sqlite',

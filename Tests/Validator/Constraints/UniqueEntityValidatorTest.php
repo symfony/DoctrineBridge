@@ -76,10 +76,16 @@ class UniqueEntityValidatorTest extends ConstraintValidatorTestCase
     protected function createRegistryMock($em = null)
     {
         $registry = $this->createMock(ManagerRegistry::class);
-        $registry->expects($this->any())
-                 ->method('getManager')
-                 ->with($this->equalTo(self::EM_NAME))
-                 ->willReturn($em);
+
+        if (null === $em) {
+            $registry->method('getManager')
+                ->with($this->equalTo(self::EM_NAME))
+                ->willThrowException(new \InvalidArgumentException());
+        } else {
+            $registry->method('getManager')
+                ->with($this->equalTo(self::EM_NAME))
+                ->willReturn($em);
+        }
 
         return $registry;
     }

@@ -487,9 +487,13 @@ class EntityValueResolverTest extends TestCase
             ->method('getManagerForClass')
             ->willReturn($manager);
 
-        $registry->expects($this->any())
-            ->method('getManager')
-            ->willReturn($manager);
+        if (null === $manager) {
+            $registry->method('getManager')
+                ->willThrowException(new \InvalidArgumentException());
+        } else {
+            $registry->method('getManager')->willReturn($manager);
+        }
+
 
         return $registry;
     }
